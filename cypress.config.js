@@ -17,6 +17,8 @@ function getTimestamp() {
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions:{
+    reportDir: 'cypress/reports',
+    reportFilename: 'report',
     overwrite:false,                                       // No sobreescribe reportes anteriores
     reportTitle:`Test Report - ${getTimestamp()}`,         // Titulo del report personalizado
     charts:true,                                           // Graficos si
