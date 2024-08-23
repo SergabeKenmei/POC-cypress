@@ -1,0 +1,6 @@
+1.- Instalar node.js
+2.- Verifica variables de entorno
+3.- npm init
+4.- npm install -g npx (instalar npx, opcional)
+5.- npm install cypress --save-dev (instalar cypress)
+6.- node_modules\.bin\cypress open  (abrir cypress por primera vez)
