@@ -1,4 +1,4 @@
-name: Manual trigger con report
+name: Manual trigger
 on:
   workflow_dispatch:
   repository_dispatch:
@@ -19,14 +19,14 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
-      - name: Instalar Cypress
-        run: npm install cypress --save-dev
-
-      - name: Instalar Mochawesome
-        run: npm install mochawesome mochawesome-merge mochawesome-report-generator --save-dev
+      - name: Instalar Cypress y Mochawesome
+        run: npm install cypress mochawesome mochawesome-merge mochawesome-report-generator --save-dev
 
       - name: Lanzar pruebas
         run: npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports,reportFilename=report
+
+      - name: Listar archivos en el directorio de reportes
+        run: ls -la cypress/reports
 
       - name: Generar reporte HTML
         run: npx mochawesome-merge cypress/reports/*.json | npx mochawesome-report-generator
