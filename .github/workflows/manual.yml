@@ -1,0 +1,30 @@
+name: Manual trigger
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types[dependency_update]
+jobs:
+  cypress-chrome-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      - name: Checkout
+  uses: actions/checkout@v4.1.7
+
+       - name: Setup Node.js environment
+  uses: actions/setup-node@v4.0.3
+  with:
+    node-version: 22.6.0
+    
+   - name: Instalar dependencias
+   run: npm install
+
+   
+   - name: Instalar Cypress
+   run: npm install cypress --save-dev
+
+   
+   - name: Lanzar pruebas
+   run: npx cypress run
+   
