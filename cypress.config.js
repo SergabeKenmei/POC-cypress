@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
 
+
 // Función para obtener una marca de tiempo formateada
 function getTimestamp() {
   const now = new Date();
@@ -28,12 +29,17 @@ module.exports = defineConfig({
   },
 
   e2e: {
-    baseUrl:"https://tf-spain.dev.kenmei.ai/",
+    viewportHeight: 1080,
+    viewportWidth: 1920,
+    //baseUrl:"https://tf-spain.dev.kenmei.ai/",
     testIsolation:false,
     defaultCommandTimeout:(3000),
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      require('cypress-mochawesome-reporter/plugin')(on);
+      require('cypress-mochawesome-reporter/plugin')(on)
+      config.baseUrl = config.env.dev;                      //Elegir entorno del archivo cypress.env
+
+    return config;
       
     },
   },

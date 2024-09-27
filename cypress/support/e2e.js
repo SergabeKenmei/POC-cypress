@@ -13,9 +13,11 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+Cypress.on('uncaught:exception', (err, runnable) => {return false;});
+/// <reference types="cypress" />
 // Import commands.js using ES2015 syntax:
 import './commands';
 import 'cypress-mochawesome-reporter/register';
-
+import 'cypress-wait-until'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
